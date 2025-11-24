@@ -146,7 +146,7 @@ export default function Home() {
     <div className="scroll-smooth bg-white text-slate-900">
       <header className="sticky top-0 z-20 border-b border-slate-100 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="text-lg font-semibold text-blue-900">MalerMarketing KI</div>
+          <div className="text-lg font-semibold text-blue-900">Maler Werbung</div>
           <a
             href="#final-cta"
             className="rounded-full bg-blue-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-800"
@@ -397,8 +397,8 @@ export default function Home() {
       <footer id="footer" className="border-t border-slate-100 bg-white py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 text-center text-sm text-slate-500 md:flex-row md:justify-between md:text-left">
           <div>
-            <p className="text-lg font-semibold text-blue-900">MalerMarketing KI</p>
-            <p>© 2025 MalerMarketing KI – KI-Marketing für Maler & Lackierer.</p>
+            <p className="text-lg font-semibold text-blue-900">Maler Werbung</p>
+            <p>© 2025 Maler Werbung – KI-Marketing für Maler & Lackierer.</p>
           </div>
           <div className="flex gap-6 text-slate-600">
             <a href="#" className="hover:text-blue-900">
