@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Maler Werbung – Landingpage",
+  title: "Maler Marketing – Landingpage",
   description: "Landingpage für KI-gestützte Marketing-Automation für Malerbetriebe.",
 };
 

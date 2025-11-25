@@ -1,20 +1,26 @@
+import { ClockIcon, EyeIcon, UserGroupIcon, BanknotesIcon, ShareIcon, ArrowsRightLeftIcon, MapPinIcon, BriefcaseIcon, CalendarIcon, PaintBrushIcon } from "@heroicons/react/24/outline";
+
 export default function Home() {
   const problemCards = [
     {
       title: "Keine Zeit fürs Marketing",
       text: "Sie stehen auf der Baustelle und nicht vor dem Computer. Social Media bleibt liegen.",
+      icon: ClockIcon,
     },
     {
       title: "Zu wenig Sichtbarkeit",
       text: "Ihre guten Projekte sehen nur der Kunde vor Ort – aber nicht neue Interessenten in Ihrer Region.",
+      icon: EyeIcon,
     },
     {
       title: "Fachkräftemangel",
       text: "Gute Mitarbeiter und Azubis zu finden, wird immer schwieriger.",
+      icon: UserGroupIcon,
     },
     {
       title: "Agenturen zu teuer",
       text: "Mehrere hundert Euro im Monat für eine Marketingagentur sind für viele Betriebe nicht drin.",
+      icon: BanknotesIcon,
     },
   ];
 
@@ -38,21 +44,25 @@ export default function Home() {
       label: "Instagram Post",
       title: "Wohnungsrenovierung – Vorher/Nachher",
       text: "Frischer Anstrich, neuer Look! Diese 3-Zimmer-Wohnung haben wir komplett neu gestaltet – von vergilbt zu modern. Lust auf Veränderung? Jetzt kostenloses Angebot anfragen.",
+      image: "/images/before_after_room.png",
     },
     {
       label: "Facebook Post",
       title: "Fassadensanierung in Ihrer Stadt",
       text: "Neue Farbe für diese Hausfassade – witterungsbeständig und langlebig. Wir beraten Sie gerne zu passenden Farbsystemen für Ihr Gebäude.",
+      image: "/images/renovating_outside.png",
     },
     {
       label: "Recruiting-Post",
       title: "Wir suchen Maler (m/w/d)",
       text: "Verstärkung gesucht! Du bist Maler oder Lackierer (m/w/d) und hast Lust auf ein familiäres Team? Bewirb dich in nur 2 Minuten per WhatsApp.",
+      image: "/images/guy_painting_wall.png",
     },
     {
       label: "Google-Post",
       title: "Tipp: Die richtige Wandfarbe fürs Schlafzimmer",
       text: "Beruhigende Farben wie Blau- und Grautöne sorgen für besseren Schlaf. Wir unterstützen Sie bei der Auswahl und übernehmen den sauberen Anstrich.",
+      image: "/images/nice_color_behind_bed.png",
     },
   ];
 
@@ -60,26 +70,32 @@ export default function Home() {
     {
       title: "Automatische Social-Media-Posts",
       text: "Wir erstellen fertige Texte und Bildideen aus Ihren Projektfotos – optimiert für Facebook & Instagram.",
+      icon: ShareIcon,
     },
     {
       title: "Vorher-Nachher-Darstellungen",
       text: "Zeigen Sie Ihre Leistung mit eindrucksvollen Vorher/Nachher-Beiträgen Ihrer Projekte.",
+      icon: ArrowsRightLeftIcon,
     },
     {
       title: "Lokale Kundenansprache",
       text: "Beiträge und Werbetexte, die gezielt Kunden in Ihrer Region ansprechen.",
+      icon: MapPinIcon,
     },
     {
       title: "Recruiting-Posts",
       text: "Mitarbeiter- und Azubi-Gewinnung mit fertigen Stellen-Posts und Bildideen.",
+      icon: BriefcaseIcon,
     },
     {
       title: "Monatlicher Posting-Plan",
       text: "Sie erhalten einen klaren Plan, wann welche Inhalte veröffentlicht werden sollten.",
+      icon: CalendarIcon,
     },
     {
       title: "Speziell für Maler & Lackierer",
       text: "Keine generische Marketingsoftware – alle Vorlagen sind auf Malerbetriebe zugeschnitten.",
+      icon: PaintBrushIcon,
     },
   ];
 
@@ -146,7 +162,7 @@ export default function Home() {
     <div className="scroll-smooth bg-white text-slate-900">
       <header className="sticky top-0 z-20 border-b border-slate-100 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="text-lg font-semibold text-blue-900">Maler Werbung</div>
+          <div className="text-lg font-semibold text-blue-900">Maler Marketing</div>
           <a
             href="#final-cta"
             className="rounded-full bg-blue-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-800"
@@ -224,13 +240,18 @@ export default function Home() {
             <h2 className="mt-3 text-3xl font-bold text-slate-900">Wir kennen die typischen Herausforderungen im Handwerk.</h2>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {problemCards.map((card) => (
-              <article key={card.title} className="rounded-2xl border border-slate-100 p-6 shadow-sm shadow-slate-200/60">
-                <div className="mb-4 h-10 w-10 rounded-full bg-blue-50" />
-                <h3 className="text-xl font-semibold text-blue-900">{card.title}</h3>
-                <p className="mt-2 text-slate-600">{card.text}</p>
-              </article>
-            ))}
+            {problemCards.map((card) => {
+              const IconComponent = card.icon;
+              return (
+                <article key={card.title} className="rounded-2xl border border-slate-100 p-6 shadow-sm shadow-slate-200/60">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-50">
+                    <IconComponent className="h-6 w-6 text-blue-900" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-blue-900">{card.title}</h3>
+                  <p className="mt-2 text-slate-600">{card.text}</p>
+                </article>
+              );
+            })}
           </div>
           <p className="mt-8 text-center text-lg font-semibold text-slate-800">Deshalb haben wir eine einfache Lösung nur für Malerbetriebe entwickelt.</p>
         </section>
@@ -268,7 +289,9 @@ export default function Home() {
             {demoPosts.map((post) => (
               <article key={post.title} className="rounded-3xl border border-slate-100 p-6 shadow-sm">
                 <span className="text-xs font-semibold uppercase text-blue-900">{post.label}</span>
-                <div className="mt-4 h-40 w-full rounded-2xl bg-slate-100" />
+                <div className="mt-4 h-64 w-full overflow-hidden rounded-2xl bg-slate-100">
+                  <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
+                </div>
                 <h3 className="mt-4 text-xl font-semibold text-slate-900">{post.title}</h3>
                 <p className="mt-2 text-sm text-slate-600">{post.text}</p>
               </article>
@@ -282,13 +305,18 @@ export default function Home() {
             <h2 className="mt-3 text-3xl font-bold text-slate-900">Mehr als nur eine weitere Marketing-App.</h2>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {features.map((feature) => (
-              <article key={feature.title} className="rounded-2xl border border-slate-100 p-6 shadow-sm">
-                <div className="mb-4 h-12 w-12 rounded-full bg-blue-50" />
-                <h3 className="text-lg font-semibold text-blue-900">{feature.title}</h3>
-                <p className="mt-2 text-slate-600">{feature.text}</p>
-              </article>
-            ))}
+            {features.map((feature) => {
+              const IconComponent = feature.icon;
+              return (
+                <article key={feature.title} className="rounded-2xl border border-slate-100 p-6 shadow-sm">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-50">
+                    <IconComponent className="h-6 w-6 text-blue-900" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-blue-900">{feature.title}</h3>
+                  <p className="mt-2 text-slate-600">{feature.text}</p>
+                </article>
+              );
+            })}
           </div>
         </section>
 
@@ -397,8 +425,8 @@ export default function Home() {
       <footer id="footer" className="border-t border-slate-100 bg-white py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 text-center text-sm text-slate-500 md:flex-row md:justify-between md:text-left">
           <div>
-            <p className="text-lg font-semibold text-blue-900">Maler Werbung</p>
-            <p>© 2025 Maler Werbung – KI-Marketing für Maler & Lackierer.</p>
+            <p className="text-lg font-semibold text-blue-900">Maler Marketing</p>
+            <p>© 2025 Maler Marketing – KI-Marketing für Maler & Lackierer.</p>
           </div>
           <div className="flex gap-6 text-slate-600">
             <a href="#" className="hover:text-blue-900">
