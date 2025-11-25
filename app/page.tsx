@@ -1,4 +1,4 @@
-import { ClockIcon, EyeIcon, UserGroupIcon, BanknotesIcon, ShareIcon, ArrowsRightLeftIcon, MapPinIcon, BriefcaseIcon, CalendarIcon, PaintBrushIcon } from "@heroicons/react/24/outline";
+import { ClockIcon, EyeIcon, UserGroupIcon, BanknotesIcon, ShareIcon, ArrowsRightLeftIcon, MapPinIcon, BriefcaseIcon, CalendarIcon, PaintBrushIcon, HeartIcon, ChatBubbleOvalLeftIcon, PaperAirplaneIcon, BookmarkIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   const problemCards = [
@@ -173,7 +173,7 @@ export default function Home() {
       </header>
 
       <main className="mx-auto max-w-6xl px-6">
-        <section id="hero" className="grid gap-10 py-16 lg:grid-cols-2 lg:items-center">
+        <section id="hero" className="grid gap-16 py-16 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-900">KI-Marketing für Maler</p>
             <h1 className="mt-6 text-4xl font-bold text-blue-900 sm:text-5xl">Mehr Kunden & Bewerber für Ihren Malerbetrieb – automatisch.</h1>
@@ -202,23 +202,45 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-xl shadow-blue-900/10">
-            <div className="rounded-2xl bg-slate-50 p-4">
-              <div className="mb-4 h-40 w-full rounded-2xl bg-gradient-to-br from-slate-200 to-slate-100" />
-              <span className="text-xs font-semibold uppercase tracking-wide text-blue-900">Instagram · Automatisiert</span>
-              <h3 className="mt-2 text-xl font-semibold text-slate-900">Frischer Fassadenanstrich</h3>
-              <p className="mt-2 text-sm text-slate-600">
+          <div className="max-w-sm rounded-2xl border border-slate-200 bg-white shadow-xl shadow-blue-900/10">
+            {/* Instagram Post Header */}
+            <div className="flex items-center gap-2 border-b border-slate-200 px-3 py-1.5">
+              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600" />
+              <div className="flex-1">
+                <p className="text-xs font-semibold text-slate-900">maler marketing</p>
+                <p className="text-[10px] text-slate-500">Automatischer Post</p>
+              </div>
+              <span className="text-[10px] font-semibold uppercase tracking-wide text-blue-900">Instagram</span>
+            </div>
+            
+            {/* Instagram Post Image */}
+            <div className="h-80 w-full overflow-hidden bg-slate-100">
+              <img src="/images/renovating_outside.png" alt="Frischer Fassadenanstrich" className="h-full w-full object-cover" />
+            </div>
+            
+            {/* Instagram Post Actions */}
+            <div className="flex items-center gap-3 border-b border-slate-200 px-3 py-1.5">
+              <HeartIcon className="h-5 w-5 text-slate-900" />
+              <ChatBubbleOvalLeftIcon className="h-5 w-5 text-slate-900" />
+              <PaperAirplaneIcon className="h-5 w-5 text-slate-900" />
+              <div className="flex-1" />
+              <BookmarkIcon className="h-5 w-5 text-slate-900" />
+            </div>
+            
+            {/* Instagram Post Content */}
+            <div className="px-3 py-1.5">
+              <p className="mb-1 text-xs font-semibold text-slate-900">Gefällt 127 Personen</p>
+              <p className="text-xs text-slate-900">
+                <span className="font-semibold">maler_marketing</span>{" "}
+                <span className="font-semibold">Frischer Fassadenanstrich</span>
+                <br />
+                <br />
                 ✅ 3 Farben | 🏡 EFH in Köln
                 <br />
-                „Neue Fassade, neuer Eindruck. Wir haben diese Altbaufront in nur 5 Tagen renoviert.“
+                <br />
+                „Neue Fassade, neuer Eindruck. Wir haben diese Altbaufront in nur 5 Tagen renoviert."
               </p>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-blue-100" />
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">Malerteam Rhein</p>
-                  <p className="text-xs text-slate-500">Automatischer Post · 09:00 Uhr</p>
-                </div>
-              </div>
+              <p className="mt-1 text-[10px] text-slate-500">vor 2 Stunden</p>
             </div>
           </div>
         </section>
