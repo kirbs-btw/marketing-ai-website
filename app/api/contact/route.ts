@@ -23,6 +23,7 @@ export async function POST(request: Request) {
     let company = "";
     let message = "";
     let website = ""; // honeypot
+    let uploadedFiles: File[] = [];
 
     const contentType = request.headers.get("content-type") || "";
 
@@ -42,6 +43,7 @@ export async function POST(request: Request) {
       company = String(form.get("company") || "").trim();
       message = String(form.get("message") || "").trim();
       website = String(form.get("website") || "").trim();
+      uploadedFiles = (form.getAll("images").filter(Boolean) as File[]) || [];
     }
 
     // Honeypot: if filled, treat as spam
@@ -81,25 +83,17 @@ export async function POST(request: Request) {
 
     // Collect up to 3 image attachments when sent as multipart/form-data
     let attachments: { filename: string; content: Buffer; contentType?: string }[] | undefined;
-    if (!contentType.includes("application/json")) {
-      try {
-        const form = await request.formData();
-        const files = form.getAll("images").filter(Boolean) as File[];
-        if (files.length) {
-          const limited = files.slice(0, 3);
-          attachments = [];
-          for (const file of limited) {
-            if (!file.type.startsWith("image/")) continue;
-            const ab = await file.arrayBuffer();
-            attachments.push({
-              filename: file.name || "image",
-              content: Buffer.from(ab),
-              contentType: file.type,
-            });
-          }
-        }
-      } catch (e) {
-        console.warn("Attachment parsing failed", e);
+    if (!contentType.includes("application/json") && uploadedFiles.length) {
+      const limited = uploadedFiles.slice(0, 3);
+      attachments = [];
+      for (const file of limited) {
+        if (!file.type.startsWith("image/")) continue;
+        const ab = await file.arrayBuffer();
+        attachments.push({
+          filename: file.name || "image",
+          content: Buffer.from(ab),
+          contentType: file.type,
+        });
       }
     }
 
