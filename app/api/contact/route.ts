@@ -4,7 +4,10 @@ import { Resend } from "resend";
 // Expected env vars:
 // RESEND_API_KEY - API key from https://resend.com
 // CONTACT_TO_EMAIL - destination email address to receive leads
-// RESEND_FROM - verified sender, e.g. "Maler Marketing <noreply@your-domain.com>"
+// RESEND_FROM - verified sender, e.g. "Marker Werbung <noreply@malerwerbung.com>"
+
+// Ensure Node runtime so Buffer is available for attachments
+export const runtime = "nodejs";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -46,11 +49,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
 
-    if (!name || !email) {
-      return NextResponse.json({ error: "Name und E-Mail sind erforderlich." }, { status: 400 });
+    if (!name || (!email && !phone)) {
+      return NextResponse.json({ error: "Bitte Name und E-Mail oder Telefonnummer angeben." }, { status: 400 });
     }
 
-    if (!isValidEmail(email)) {
+    if (email && !isValidEmail(email)) {
       return NextResponse.json({ error: "Bitte geben Sie eine gültige E-Mail an." }, { status: 400 });
     }
 
@@ -76,12 +79,37 @@ export async function POST(request: Request) {
       </div>
     `;
 
+    // Collect up to 3 image attachments when sent as multipart/form-data
+    let attachments: { filename: string; content: Buffer; contentType?: string }[] | undefined;
+    if (!contentType.includes("application/json")) {
+      try {
+        const form = await request.formData();
+        const files = form.getAll("images").filter(Boolean) as File[];
+        if (files.length) {
+          const limited = files.slice(0, 3);
+          attachments = [];
+          for (const file of limited) {
+            if (!file.type.startsWith("image/")) continue;
+            const ab = await file.arrayBuffer();
+            attachments.push({
+              filename: file.name || "image",
+              content: Buffer.from(ab),
+              contentType: file.type,
+            });
+          }
+        }
+      } catch (e) {
+        console.warn("Attachment parsing failed", e);
+      }
+    }
+
     const { error } = await resend.emails.send({
       from,
       to,
       subject,
-      reply_to: email,
+      reply_to: email || undefined,
       html,
+      attachments,
     } as any);
 
     if (error) {

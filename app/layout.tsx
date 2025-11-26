@@ -3,7 +3,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "Maler Marketing – Landingpage",
+  title: "Marker Werbung – Landingpage",
   description: "Landingpage für KI-gestützte Marketing-Automation für Malerbetriebe.",
 };
 

@@ -163,7 +163,7 @@ export default function Home() {
     <div className="scroll-smooth bg-white text-slate-900">
       <header className="sticky top-0 z-20 border-b border-slate-100 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="text-lg font-semibold text-blue-900">Maler Marketing</div>
+          <div className="text-lg font-semibold text-blue-900">Marker Werbung</div>
           <a
             href="#final-cta"
             className="rounded-full bg-blue-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-800"
@@ -208,7 +208,7 @@ export default function Home() {
             <div className="flex items-center gap-2 border-b border-slate-200 px-3 py-1.5">
               <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600" />
               <div className="flex-1">
-                <p className="text-xs font-semibold text-slate-900">maler marketing</p>
+                <p className="text-xs font-semibold text-slate-900">marker werbung</p>
                 <p className="text-[10px] text-slate-500">Automatischer Post</p>
               </div>
               <span className="text-[10px] font-semibold uppercase tracking-wide text-blue-900">Instagram</span>
@@ -232,7 +232,7 @@ export default function Home() {
             <div className="px-3 py-1.5">
               <p className="mb-1 text-xs font-semibold text-slate-900">Gefällt 127 Personen</p>
               <p className="text-xs text-slate-900">
-                <span className="font-semibold">maler_marketing</span>{" "}
+                <span className="font-semibold">marker_werbung</span>{" "}
                 <span className="font-semibold">Frischer Fassadenanstrich</span>
                 <br />
                 <br />
@@ -428,8 +428,8 @@ export default function Home() {
       <footer id="footer" className="border-t border-slate-100 bg-white py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 text-center text-sm text-slate-500 md:flex-row md:justify-between md:text-left">
           <div>
-            <p className="text-lg font-semibold text-blue-900">Maler Marketing</p>
-            <p>© 2025 Maler Marketing – KI-Marketing für Maler & Lackierer.</p>
+            <p className="text-lg font-semibold text-blue-900">Marker Werbung</p>
+            <p>© 2025 Marker Werbung – KI-Marketing für Maler & Lackierer.</p>
           </div>
           <div className="flex gap-6 text-slate-600">
             <a href="#" className="hover:text-blue-900">
