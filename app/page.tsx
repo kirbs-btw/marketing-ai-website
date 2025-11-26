@@ -1,4 +1,5 @@
 import { ClockIcon, EyeIcon, UserGroupIcon, BanknotesIcon, ShareIcon, ArrowsRightLeftIcon, MapPinIcon, BriefcaseIcon, CalendarIcon, PaintBrushIcon, HeartIcon, ChatBubbleOvalLeftIcon, PaperAirplaneIcon, BookmarkIcon } from "@heroicons/react/24/outline";
+import ContactForm from "./components/ContactForm";
 
 export default function Home() {
   const problemCards = [
@@ -420,27 +421,7 @@ export default function Home() {
           <h2 className="mt-4 text-3xl font-bold">Erhalten Sie unverbindlich kostenlose Beispiel-Posts für Ihren Betrieb.</h2>
           <p className="mt-3 text-blue-100">Keine Vertragsbindung. Wir melden uns innerhalb von 24 Stunden.</p>
 
-          <form className="mt-8 grid gap-4 text-left">
-            <div>
-              <label className="block text-sm font-semibold text-amber-200">Name</label>
-              <input type="text" className="mt-2 w-full rounded-xl border border-blue-700 bg-blue-800/70 px-4 py-3 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Ihr Name" />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-amber-200">E-Mail</label>
-              <input type="email" className="mt-2 w-full rounded-xl border border-blue-700 bg-blue-800/70 px-4 py-3 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Ihre E-Mail-Adresse" />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-amber-200">Telefon (optional)</label>
-              <input type="tel" className="mt-2 w-full rounded-xl border border-blue-700 bg-blue-800/70 px-4 py-3 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="+49 ..." />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-amber-200">Ihr Malerbetrieb</label>
-              <input type="text" className="mt-2 w-full rounded-xl border border-blue-700 bg-blue-800/70 px-4 py-3 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="Firmenname" />
-            </div>
-            <button type="submit" className="mt-4 rounded-full bg-amber-400 px-6 py-4 text-base font-semibold text-slate-900 shadow-lg shadow-amber-500/40 transition hover:bg-amber-300">
-              Jetzt kostenlose Beispiel-Posts erhalten
-            </button>
-          </form>
+          <ContactForm />
         </div>
       </section>
 
