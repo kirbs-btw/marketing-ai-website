@@ -6,7 +6,6 @@ export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState<string>("");
   const [filesInfo, setFilesInfo] = useState<string>("");
-  const [showImages, setShowImages] = useState<boolean>(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -92,37 +91,25 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <button
-          type="button"
-          onClick={() => setShowImages((v) => !v)}
-          className="rounded-full border border-amber-300 px-4 py-2 text-sm font-semibold text-amber-200 hover:bg-amber-300/10"
-        >
-          {showImages ? "Bilder-Auswahl verbergen" : "Bilder hinzufügen (optional)"}
-        </button>
+        <label className="block text-sm font-semibold text-amber-200">Bilder anhängen (optional, bis zu 3)</label>
+        <input
+          name="images"
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={(e) => {
+            const selected = Array.from(e.target.files || []);
+            const info = selected
+              .slice(0, 3)
+              .map((f) => `${f.name} (${Math.round(f.size / 1024)} KB)`)
+              .join(", ");
+            setFilesInfo(info);
+          }}
+          className="mt-2 w-full rounded-xl border border-blue-700 bg-blue-800/70 px-4 py-2 text-white file:mr-4 file:rounded-lg file:border-0 file:bg-amber-400 file:px-4 file:py-2 file:text-slate-900 hover:file:bg-amber-300"
+        />
+        {filesInfo && <p className="mt-1 text-xs text-blue-100">Ausgewählt: {filesInfo}</p>}
+        <p className="mt-1 text-xs text-blue-200">Optional • Erlaubt: JPG, PNG, WEBP • Max 3 Dateien • je max 5 MB</p>
       </div>
-
-      {showImages && (
-        <div>
-          <label className="mt-2 block text-sm font-semibold text-amber-200">Bilder anhängen (optional, bis zu 3)</label>
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={(e) => {
-              const selected = Array.from(e.target.files || []);
-              const info = selected
-                .slice(0, 3)
-                .map((f) => `${f.name} (${Math.round(f.size / 1024)} KB)`)
-                .join(", ");
-              setFilesInfo(info);
-            }}
-            className="mt-2 w-full rounded-xl border border-blue-700 bg-blue-800/70 px-4 py-2 text-white file:mr-4 file:rounded-lg file:border-0 file:bg-amber-400 file:px-4 file:py-2 file:text-slate-900 hover:file:bg-amber-300"
-          />
-          {filesInfo && <p className="mt-1 text-xs text-blue-100">Ausgewählt: {filesInfo}</p>}
-          <p className="mt-1 text-xs text-blue-200">Optional • Erlaubt: JPG, PNG, WEBP • Max 3 Dateien • je max 5 MB</p>
-        </div>
-      )}
 
       <button type="submit" disabled={status === "loading"} className="mt-4 rounded-full bg-amber-400 px-6 py-4 text-base font-semibold text-slate-900 shadow-lg shadow-amber-500/40 transition hover:bg-amber-300 disabled:opacity-60">
         {status === "loading" ? "Senden..." : "Jetzt kostenlose Beispiel-Posts erhalten"}
