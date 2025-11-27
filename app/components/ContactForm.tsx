@@ -91,7 +91,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-amber-200">Bilder anhängen (bis zu 3)</label>
+        <label className="block text-sm font-semibold text-amber-200">Bilder anhängen (optional, bis zu 3)</label>
         <input
           name="images"
           type="file"
