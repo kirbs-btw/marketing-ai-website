@@ -25,8 +25,9 @@ export default function ContactForm() {
       return;
     }
 
-    // Files validation: 1-3 images, max 5MB each
-    const files = (formData.getAll("images") as File[]).filter(Boolean);
+    // Files validation: optional images (filter out empty placeholders), 1-3 images, max 5MB each
+    const files = (formData.getAll("images") as File[])
+      .filter((f) => f && typeof (f as any).size === "number" && (f as any).size > 0);
     if (files.length > 3) {
       setStatus("error");
       setError("Maximal 3 Bilder anhängen.");
@@ -38,11 +39,17 @@ export default function ContactForm() {
         setError("Jedes Bild max. 5 MB.");
         return;
       }
-      if (!f.type.startsWith("image/")) {
+      if (f.type && !f.type.startsWith("image/")) {
         setStatus("error");
         setError("Nur Bilddateien sind erlaubt.");
         return;
       }
+    }
+
+    // Ensure only non-empty files are sent
+    formData.delete("images");
+    for (const f of files) {
+      formData.append("images", f);
     }
 
     try {

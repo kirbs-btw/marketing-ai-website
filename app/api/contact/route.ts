@@ -43,7 +43,9 @@ export async function POST(request: Request) {
       company = String(form.get("company") || "").trim();
       message = String(form.get("message") || "").trim();
       website = String(form.get("website") || "").trim();
-      uploadedFiles = (form.getAll("images").filter(Boolean) as File[]) || [];
+      uploadedFiles = ((form.getAll("images").filter(Boolean) as File[]) || []).filter(
+        (f) => f && typeof (f as any).size === "number" && (f as any).size > 0
+      );
     }
 
     // Honeypot: if filled, treat as spam
@@ -87,7 +89,8 @@ export async function POST(request: Request) {
       const limited = uploadedFiles.slice(0, 3);
       attachments = [];
       for (const file of limited) {
-        if (!file.type.startsWith("image/")) continue;
+        if (file.size === 0) continue;
+        if (file.type && !file.type.startsWith("image/")) continue;
         const ab = await file.arrayBuffer();
         attachments.push({
           filename: file.name || "image",
