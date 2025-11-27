@@ -4,7 +4,7 @@ import { Resend } from "resend";
 // Expected env vars:
 // RESEND_API_KEY - API key from https://resend.com
 // CONTACT_TO_EMAIL - destination email address to receive leads
-// RESEND_FROM - verified sender, e.g. "Marker Werbung <noreply@malerwerbung.com>"
+// RESEND_FROM - verified sender, e.g. "Maler Werbung <noreply@malerwerbung.com>"
 
 // Ensure Node runtime so Buffer is available for attachments
 export const runtime = "nodejs";

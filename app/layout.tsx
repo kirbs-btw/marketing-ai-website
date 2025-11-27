@@ -3,7 +3,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "Marker Werbung – Landingpage",
+  title: "Maler Werbung – Landingpage",
   description: "Landingpage für KI-gestützte Marketing-Automation für Malerbetriebe.",
 };
 
@@ -17,4 +17,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
