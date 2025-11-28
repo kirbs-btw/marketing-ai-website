@@ -430,12 +430,15 @@ export default function Home() {
           <div>
             <p className="text-lg font-semibold text-blue-900">Maler Werbung</p>
             <p>© 2025 Maler Werbung – KI-Marketing für Maler & Lackierer.</p>
+            <p>
+              Maler Werbung – ein <a href="https://shade-technology.de" className="hover:text-blue-900">Shade Technology</a> Produkt
+            </p>
           </div>
           <div className="flex gap-6 text-slate-600">
-            <a href="#" className="hover:text-blue-900">
+            <a href="https://www.shade-technology.de/impressum.html" className="hover:text-blue-900">
               Impressum
             </a>
-            <a href="#" className="hover:text-blue-900">
+            <a href="https://www.shade-technology.de/datenschutz.html" className="hover:text-blue-900">
               Datenschutz
             </a>
             <a href="#final-cta" className="hover:text-blue-900">
@@ -447,4 +450,3 @@ export default function Home() {
     </div>
   );
 }
-
